@@ -23,11 +23,11 @@ public string HelloWorld()
 
 This will send the string "\<h1\>Hello World!\</h1\>" to the browser to be displayed.
 ```C#
-public double GetBmi(){
-    return Person.Bmi();
+public double FiveAndAHalf(){
+    return 5.5;
 }
 ```
-This will send the Bmi of the Person to the browser to be displayed.
+This will send the double value 5.5 to the browser to be displayed.
 
 This isn't just limited to simple strings and primitives. You can also send objects too!
 
@@ -49,16 +49,16 @@ class Person
 
 A simple Get method in the object you are passing into the runner would look like this.
 ```C#
-public Get GetPerson()
+public Person GetPerson()
 {
-    return new Get(Person);
+    return Person;
 }
 ```
 How about passing into functions?
 ```C#
-public Get SetAge(int age)
+public Person SetAge(int age)
 {
     Person.Age = age;
-    return new Get(Person);
+    return Person;
 }
 ```
