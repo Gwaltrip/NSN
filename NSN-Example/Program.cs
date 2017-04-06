@@ -10,10 +10,7 @@ namespace NSN.Example
             public Person Person { get; set; }
             public Get HelloWorld()
             {
-                return new Get()
-                {
-                    Payload = "<h1>Hello World!</h1>"
-                };
+                return new Get("<h1>Hello World!</h1>");
             }
             public Get GetPerson()
             {

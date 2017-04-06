@@ -1,29 +1,19 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace NSN.Core
 {
     public class Get
     {
-        public string Payload { get; set; }
+        private readonly string _payload;
 
         public Get(object obj)
         {
-            Payload = JsonConvert.SerializeObject(obj);
-        }
-
-        public Get()
-        {
-            
+            _payload = JsonConvert.SerializeObject(obj);
         }
 
         public override string ToString()
         {
-            return Payload;
+            return _payload;
         }
     }
 }
