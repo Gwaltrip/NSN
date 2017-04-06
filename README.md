@@ -21,3 +21,50 @@ public Get HelloWorld()
 ```
 
 This will send the string "\<h1\>Hello World!\</h1\>" to the browser to be displayed.
+
+This isn't just limited to simple strings. You can also send objects.
+
+```C#
+class Person
+{
+    public int Age { get; set; }
+    public int Height { get; set; }
+    public float Weight { get; set; }
+    public string FirstName { get; set; }
+    public string LastName { get; set; }
+
+    public float Bmi()
+    {
+        return (float) (Weight * 704.7) / (Height * Height);
+    }
+}
+```
+
+A simple Get method in the object you are passing into the runner would look like this.
+```C#
+public Get GetPerson()
+{
+    return new Get(Person);
+}
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
