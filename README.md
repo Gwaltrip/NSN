@@ -49,16 +49,16 @@ class Person
 
 A simple Get method in the object you are passing into the runner would look like this.
 ```C#
-public Get GetPerson()
+public Person GetPerson()
 {
-    return new Get(Person);
+    return Person;
 }
 ```
 How about passing into functions?
 ```C#
-public Get SetAge(int age)
+public Person SetAge(int age)
 {
     Person.Age = age;
-    return new Get(Person);
+    return Person;
 }
 ```
