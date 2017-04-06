@@ -8,17 +8,17 @@ namespace NSN.Example
         class ExampleObject
         {
             public Person Person { get; set; }
-            public Get HelloWorld()
+            public string HelloWorld()
             {
-                return new Get("<h1>Hello World!</h1>");
+                return "<h1>Hello World!</h1>";
+            }
+            public double GetBmi()
+            {
+                return Person.Bmi();
             }
             public Get GetPerson()
             {
                 return new Get(Person);
-            }
-            public Get GetBmi()
-            {
-                return new Get(Person.Bmi());
             }
 
             public Get SetAge(int age)

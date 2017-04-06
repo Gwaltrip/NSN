@@ -14,26 +14,17 @@ namespace NSN.Core.Modules
             var set = false;
             var types = new Dictionary<string, MethodInfo>();
             var parameters = new Dictionary<string, List<ParameterInfo>>();
-            var getType = typeof(Core.Get);
-            var postType = typeof(Core.Post);
             Get["/{route}"] = _ =>
             {
                 if (!set)
                 {
                     foreach (var i in CoreObject.GetType().GetMethods())
                     {
-                        if (i.ReturnType == getType)
-                        {
-                            types.Add(i.Name, i);
-                            if (i.GetParameters().Length == 0)
-                                continue;
-                            parameters.Add(i.Name, new List<ParameterInfo>());
-                            parameters[i.Name].AddRange(i.GetParameters());
-                        }
-                        else if (i.ReturnType == postType)
-                        {
-                            
-                        }
+                        types.Add(i.Name, i);
+                        if (i.GetParameters().Length == 0)
+                            continue;
+                        parameters.Add(i.Name, new List<ParameterInfo>());
+                        parameters[i.Name].AddRange(i.GetParameters());
                     }
                     set = true;
                 }
