@@ -23,8 +23,8 @@ public string HelloWorld()
 
 This will send the string "\<h1\>Hello World!\</h1\>" to the browser to be displayed.
 ```C#
-public double GetBmi(){
-    return Person.Bmi();
+public double FiveAndAHalf(){
+    return 5.5;
 }
 ```
 This will send the Bmi of the Person to the browser to be displayed.
