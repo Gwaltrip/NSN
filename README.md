@@ -12,18 +12,24 @@ Console.Read();
 runner.Stop();
 ```
 
-There must be methods that return Get, such as below.
+Example of a few methods of an protentical object that can be sent to runner are below.
 
 ```C#
-public Get HelloWorld()
+public string HelloWorld()
 {
-    return new Get("<h1>Hello World!</h1>");
+    return "<h1>Hello World!</h1>"
 }
 ```
 
 This will send the string "\<h1\>Hello World!\</h1\>" to the browser to be displayed.
+```C#
+public double GetBmi(){
+    return Person.Bmi();
+}
+```
+This will send the Bmi of the Person to the browser to be displayed.
 
-This isn't just limited to simple strings. You can also send objects.
+This isn't just limited to simple strings and primitives. You can also send objects too!
 
 ```C#
 class Person
@@ -48,10 +54,11 @@ public Get GetPerson()
     return new Get(Person);
 }
 ```
-How about results of functions?
+How about passing into functions?
 ```C#
-public Get GetBmi()
+public Get SetAge(int age)
 {
-    return new Get(Person.Bmi());
+    Person.Age = age;
+    return new Get(Person);
 }
 ```
