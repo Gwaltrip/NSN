@@ -10,3 +10,14 @@ runner.Start();
 Console.Read();
 runner.Stop();
 ```
+
+There must be methods that return Get, such as below.
+
+```C#
+public Get HelloWorld()
+{
+    return new Get("<h1>Hello World!</h1>");
+}
+```
+
+This will send the string "<h1>Hello World!</h1>" to the browser to be displayed.
