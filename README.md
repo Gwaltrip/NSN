@@ -48,24 +48,10 @@ public Get GetPerson()
     return new Get(Person);
 }
 ```
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+How about results of functions?
+```C#
+public Get GetBmi()
+{
+    return new Get(Person.Bmi());
+}
+```
