@@ -1,6 +1,5 @@
 ﻿using System;
 using NSN.Core;
-using NSN.Core.Modules;
 
 namespace NSN.Example
 {

@@ -20,8 +20,11 @@ namespace NSN.Core.Modules
                 {
                     foreach (var i in CoreObject.GetType().GetMethods())
                     {
-                        types.Add(i.Name, i);
+                        if(!types.ContainsKey(i.Name))
+                            types.Add(i.Name, i);
                         if (i.GetParameters().Length == 0)
+                            continue;
+                        if (parameters.ContainsKey(i.Name))
                             continue;
                         parameters.Add(i.Name, new List<ParameterInfo>());
                         parameters[i.Name].AddRange(i.GetParameters());
