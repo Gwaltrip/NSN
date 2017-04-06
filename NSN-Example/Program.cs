@@ -16,25 +16,25 @@ namespace NSN.Example
             {
                 return Person.Bmi();
             }
-            public Get GetPerson()
+            public Person GetPerson()
             {
-                return new Get(Person);
+                return Person;
             }
 
-            public Get SetAge(int age)
+            public Person SetAge(int age)
             {
                 Person.Age = age;
-                return new Get(Person);
+                return Person;
             }
 
-            public Get SetPerson(int age, int height, double weight, string firstName, string lastName)
+            public Json SetPerson(int age, int height, double weight, string firstName, string lastName)
             {
                 Person.Age = age;
                 Person.Height = height;
                 Person.Weight = weight;
                 Person.FirstName = firstName;
                 Person.LastName = lastName;
-                return new Get(Person);
+                return new Json(Person);
             }
         }
 

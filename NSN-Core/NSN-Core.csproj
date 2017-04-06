@@ -55,7 +55,7 @@
   <ItemGroup>
     <Compile Include="Modules\CoreModule.cs" />
     <Compile Include="Runner.cs" />
-    <Compile Include="Get.cs" />
+    <Compile Include="Json.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
