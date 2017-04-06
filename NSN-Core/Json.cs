@@ -2,7 +2,7 @@
 
 namespace NSN.Core
 {
-    public class Json
+    internal class Json
     {
         private readonly string _payload;
 
