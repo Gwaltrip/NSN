@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using System.Reflection;
 using Nancy;
 
@@ -13,19 +14,25 @@ namespace NSN.Core.Modules
         {
             bool set = false;
             var types = new Dictionary<string, MethodInfo>();
+            var parameters = new Dictionary<string, List<ParameterInfo>>();
+            var getType = typeof(Core.Get);
+            var postType = typeof(Core.Post);
             Get["/{route}"] = _ =>
             {
                 if (!set)
                 {
                     foreach (var i in CoreObject.GetType().GetMethods())
                     {
-                        if (i.ToString().Contains(".Get "))
+                        if (i.ReturnType == getType)
                         {
-                            string[] tokens = i.ToString().Split(' ');
-                            string name = tokens[1].Substring(0, tokens[1].Split('(')[0].Length);
-                            types.Add(name, i);
+                            types.Add(i.Name, i);
+                            if (i.GetParameters().Length > 0)
+                            {
+                                parameters.Add(i.Name, new List<ParameterInfo>());
+                                parameters[i.Name].AddRange(i.GetParameters());
+                            }
                         }
-                        else if (i.ToString().Contains(".Post "))
+                        else if (i.ReturnType == postType)
                         {
                             
                         }
@@ -34,6 +41,22 @@ namespace NSN.Core.Modules
                 }
                 if (types.ContainsKey(_.route.ToString()))
                 {
+                    if (parameters.ContainsKey(_.route.ToString()))
+                    {
+                        List<object> paraObjects = new List<object>();
+                        foreach (ParameterInfo p in parameters[_.route.ToString()])
+                        {
+                            if (Request.Query[p.Name] != null)
+                            {
+                                paraObjects.Add(Convert.ChangeType(Request.Query[p.Name], p.ParameterType));
+                            }
+                        }
+                        object[] objects = paraObjects.ToArray();
+                        if (objects.Length == 0)
+                            objects = null;
+
+                        return types[_.route.ToString()].Invoke(CoreObject, objects).ToString();
+                    }
                     return types[_.route.ToString()].Invoke(CoreObject, null).ToString();
                 }
                 return HttpStatusCode.NotFound;

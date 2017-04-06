@@ -15,15 +15,29 @@ namespace NSN.Example
                     Payload = "<h1>Hello World!</h1>"
                 };
             }
-
             public Get GetPerson()
             {
                 return new Get(Person);
             }
-
             public Get GetBmi()
             {
                 return new Get(Person.Bmi());
+            }
+
+            public Get SetAge(int age)
+            {
+                Person.Age = age;
+                return new Get(Person);
+            }
+
+            public Get SetPerson(int age, int height, double weight, string firstName, string lastName)
+            {
+                Person.Age = age;
+                Person.Height = height;
+                Person.Weight = weight;
+                Person.FirstName = firstName;
+                Person.LastName = lastName;
+                return new Get(Person);
             }
         }
 
@@ -31,7 +45,7 @@ namespace NSN.Example
         {
             public int Age { get; set; }
             public int Height { get; set; }
-            public float Weight { get; set; }
+            public double Weight { get; set; }
             public string FirstName { get; set; }
             public string LastName { get; set; }
 
