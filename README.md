@@ -17,7 +17,7 @@ Example of a few methods of an protentical object that can be sent to runner are
 ```C#
 public string HelloWorld()
 {
-    return "<h1>Hello World!</h1>"
+    return "<h1>Hello World!</h1>";
 }
 ```
 
