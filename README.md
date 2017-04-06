@@ -1,4 +1,5 @@
-# NSN - An quicker way for connecting simple classes and objects to the internet
+# NSN - Nancy Simple Notation
+## An quicker way for connecting simple classes and objects to the internet
 
 How quick is it? Quick.
 
