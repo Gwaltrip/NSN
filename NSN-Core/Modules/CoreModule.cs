@@ -11,7 +11,7 @@ namespace NSN.Core.Modules
 
         public CoreModule()
         {
-            bool set = false;
+            var set = false;
             var types = new Dictionary<string, MethodInfo>();
             var parameters = new Dictionary<string, List<ParameterInfo>>();
             var getType = typeof(Core.Get);
@@ -25,11 +25,10 @@ namespace NSN.Core.Modules
                         if (i.ReturnType == getType)
                         {
                             types.Add(i.Name, i);
-                            if (i.GetParameters().Length > 0)
-                            {
-                                parameters.Add(i.Name, new List<ParameterInfo>());
-                                parameters[i.Name].AddRange(i.GetParameters());
-                            }
+                            if (i.GetParameters().Length == 0)
+                                continue;
+                            parameters.Add(i.Name, new List<ParameterInfo>());
+                            parameters[i.Name].AddRange(i.GetParameters());
                         }
                         else if (i.ReturnType == postType)
                         {
@@ -38,27 +37,21 @@ namespace NSN.Core.Modules
                     }
                     set = true;
                 }
-                if (types.ContainsKey(_.route.ToString()))
-                {
-                    if (parameters.ContainsKey(_.route.ToString()))
-                    {
-                        List<object> paraObjects = new List<object>();
-                        foreach (ParameterInfo p in parameters[_.route.ToString()])
-                        {
-                            if (Request.Query[p.Name] != null)
-                            {
-                                paraObjects.Add(Convert.ChangeType(Request.Query[p.Name], p.ParameterType));
-                            }
-                        }
-                        object[] objects = paraObjects.ToArray();
-                        if (objects.Length == 0)
-                            objects = null;
-
-                        return types[_.route.ToString()].Invoke(CoreObject, objects).ToString();
-                    }
+                if (!types.ContainsKey(_.route.ToString()))
+                    return HttpStatusCode.NotFound;
+                if (!parameters.ContainsKey(_.route.ToString()))
                     return types[_.route.ToString()].Invoke(CoreObject, null).ToString();
+
+                var paraObjects = new List<object>();
+                foreach (ParameterInfo p in parameters[_.route.ToString()])
+                {
+                    if (Request.Query[p.Name] != null)
+                    {
+                        paraObjects.Add(Convert.ChangeType(Request.Query[p.Name], p.ParameterType));
+                    }
                 }
-                return HttpStatusCode.NotFound;
+
+                return types[_.route.ToString()].Invoke(CoreObject, paraObjects.Count == 0 ? null : paraObjects.ToArray()).ToString();
             };
         }
     }
