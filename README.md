@@ -20,4 +20,4 @@ public Get HelloWorld()
 }
 ```
 
-This will send the string "<h1>Hello World!</h1>" to the browser to be displayed.
+This will send the string "\<h1\>Hello World!\</h1\>" to the browser to be displayed.
