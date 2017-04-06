@@ -27,7 +27,7 @@ public double FiveAndAHalf(){
     return 5.5;
 }
 ```
-This will send the Bmi of the Person to the browser to be displayed.
+This will send the double value 5.5 to the browser to be displayed.
 
 This isn't just limited to simple strings and primitives. You can also send objects too!
 
