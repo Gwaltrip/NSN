@@ -66,11 +66,10 @@ namespace NSN.Example
                 }
             };
 
-
-            var core = new Runner(example, "http://localhost:8080");
-            core.Start();
+            var runner = new Runner(example, "http://localhost:8080");
+            runner.Start();
             Console.Read();
-            core.Stop();
+            runner.Stop();
         }
     }
 }
