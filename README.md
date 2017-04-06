@@ -1,4 +1,4 @@
-# NSN - An quicker way of using NancyFx for simple classes and objects
+# NSN - An quicker way for connecting simple classes and objects to the internet
 
 How quick is it? Quick.
 
