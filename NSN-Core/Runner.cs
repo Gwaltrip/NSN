@@ -29,11 +29,6 @@ namespace NSN.Core
             CoreModule.CoreObject = coreObject;
         }
 
-        public Runner()
-        {
-            
-        }
-
         public void Start()
         {
             _host = new NancyHost(new Uri(_url));

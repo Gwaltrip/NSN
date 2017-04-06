@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
 using Nancy;
 
@@ -8,7 +7,7 @@ namespace NSN.Core.Modules
 {
     public class CoreModule : NancyModule
     {
-        public static object CoreObject { private get; set; }
+        internal static object CoreObject { private get; set; }
 
         public CoreModule()
         {
