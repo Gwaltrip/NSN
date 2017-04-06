@@ -12,10 +12,17 @@ namespace NSN.Example
             {
                 return "<h1>Hello World!</h1>";
             }
+
+            public double FiveAndAHalf()
+            {
+                return 5.5;
+            }
+
             public double GetBmi()
             {
                 return Person.Bmi();
             }
+
             public Person GetPerson()
             {
                 return Person;
@@ -27,14 +34,14 @@ namespace NSN.Example
                 return Person;
             }
 
-            public Json SetPerson(int age, int height, double weight, string firstName, string lastName)
+            public Person SetPerson(int age, int height, double weight, string firstName, string lastName)
             {
                 Person.Age = age;
                 Person.Height = height;
                 Person.Weight = weight;
                 Person.FirstName = firstName;
                 Person.LastName = lastName;
-                return new Json(Person);
+                return Person;
             }
         }
 
