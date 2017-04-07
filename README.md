@@ -11,6 +11,7 @@ runner.Start();
 Console.Read();
 runner.Stop();
 ```
+Runner will bind any publicly accessable methods.
 
 Example of a few methods of an protentical object that can be sent to runner are below.
 
