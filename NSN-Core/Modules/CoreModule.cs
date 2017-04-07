@@ -34,33 +34,24 @@ namespace NSN.Core.Modules
                 if (!types.ContainsKey(_.route.ToString()))
                     return HttpStatusCode.NotFound;
 
-                MethodInfo method = types[_.route.ToString()];
-                object returnObject;
-                if (!parameters.ContainsKey(_.route.ToString()))
-                {
-                    if (method.ReturnType.IsPrimitive)
-                        returnObject = method.Invoke(CoreObject, null);
-                    else
-                        returnObject = new Json(method.Invoke(CoreObject, null));
-                    return returnObject.ToString();
-                }
-
                 var paraObjects = new List<object>();
-                foreach (ParameterInfo p in parameters[_.route.ToString()])
+                if (parameters.ContainsKey(_.route.ToString()))
                 {
-                    if (Request.Query[p.Name] != null)
+                    foreach (ParameterInfo p in parameters[_.route.ToString()])
                     {
-                        paraObjects.Add(Convert.ChangeType(Request.Query[p.Name], p.ParameterType));
+                        if (Request.Query[p.Name] != null)
+                        {
+                            paraObjects.Add(Convert.ChangeType(Request.Query[p.Name], p.ParameterType));
+                        }
                     }
                 }
-                object[] parObjects = null;
-                if (paraObjects.Count != 0)
-                    parObjects = paraObjects.ToArray();
 
+                MethodInfo method = types[_.route.ToString()];
+                object returnObject;
                 if (method.ReturnType.IsPrimitive)
-                    returnObject = method.Invoke(CoreObject, parObjects);
+                    returnObject = method.Invoke(CoreObject, paraObjects.ToArray());
                 else
-                    returnObject = new Json(method.Invoke(CoreObject, parObjects));
+                    returnObject = new Json(method.Invoke(CoreObject, paraObjects.ToArray()));
                 return returnObject.ToString();
             };
         }
