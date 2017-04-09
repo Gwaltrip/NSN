@@ -1,20 +1,16 @@
 ﻿using System;
 using Nancy.Hosting.Self;
 using NSN.Core.Modules;
-using System.Runtime.InteropServices;
 
 namespace NSN.Core
 {
-    [ComVisible(true)]
     public interface IRunner
     {
         void Start();
         void Start(string url);
         void Stop();
     }
-
-    [ComVisible(true)]
-    [ClassInterface(ClassInterfaceType.None)]
+    
     public class Runner: IRunner
     {
         private string _url;
