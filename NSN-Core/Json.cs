@@ -26,7 +26,7 @@ namespace NSN.Core
                 System.Console.WriteLine(e.StackTrace);
             }
             return default(T);
-        }
+        } 
         
         public override string ToString()
         {
