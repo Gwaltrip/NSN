@@ -14,10 +14,9 @@ namespace NSN.Core
 
         public static T ToObject<T>(string payload)
         {
-            T obj;
             try
             {
-                obj = JsonConvert.DeserializeObject<T>(payload);
+                var obj = JsonConvert.DeserializeObject<T>(payload);
                 return obj;
             }
             catch(System.Exception e)
