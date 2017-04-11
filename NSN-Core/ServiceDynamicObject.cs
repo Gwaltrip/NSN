@@ -6,17 +6,9 @@ namespace NSN.Core
 {
     public class ServiceDynamicObject<T>: DynamicObject
     {
-        private readonly string _uri;
-        private readonly RestClient _restClient;
-
-        public ServiceDynamicObject(string uri)
+        public static TR Pass<TR>(string uri, string method, params object[] obj)
         {
-            _uri = uri;
-            _restClient = new RestClient(_uri);
-        }
-
-        public TR Pass<TR>(string method, params object[] obj)
-        {
+            RestClient restClient = new RestClient(uri);
             MethodInfo methodInfo = typeof(T).GetMethod(method);
             if (methodInfo is null)
                 throw new System.MissingMethodException($"No Method by type '{method}'!");
@@ -30,17 +22,18 @@ namespace NSN.Core
                 }
             }
 
-            var response = _restClient.Execute(request);
+            var response = restClient.Execute(request);
             var content = response.Content;
 
             return Json.ToObject<TR>(content);
         }
-        public TR Pass<TR>(string method)
+        public static TR Pass<TR>(string uri, string method)
         {
+            RestClient restClient = new RestClient(uri);
             MethodInfo methodInfo = typeof(T).GetMethod(method);
             var request = new RestRequest($"/{method}");
 
-            var response = _restClient.Execute(request);
+            var response = restClient.Execute(request);
             var content = response.Content;
 
             return Json.ToObject<TR>(content);

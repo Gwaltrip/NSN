@@ -57,13 +57,13 @@ namespace NSN.Example
         }
         public Person GetTheirPerson()
         {
-            ServiceDynamicObject<Person> personMethod = new ServiceDynamicObject<Person>("http://localhost:8081");
-            return personMethod.Pass<Person>("GetPerson");
+            return ServiceDynamicObject<IExampleObject>
+                .Pass<Person>("http://localhost:8081", "GetPerson");
         }
         public Person SetTheirPerson(int age, int height, double weight, string firstName, string lastName)
         {
-            ServiceDynamicObject<IExampleObject> personMethod = new ServiceDynamicObject<IExampleObject>("http://localhost:8081");
-            return personMethod.Pass<Person>("SetPerson", age, height, weight, firstName, lastName);
+            return ServiceDynamicObject<IExampleObject>
+                .Pass<Person>("http://localhost:8081", "SetPerson", age, height, weight, firstName, lastName);
         }
     }
     public class Person
