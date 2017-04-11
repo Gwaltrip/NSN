@@ -58,12 +58,12 @@ namespace NSN.Example
         public Person GetTheirPerson()
         {
             return ServiceDynamicObject<IExampleObject>
-                .Pass<Person>("http://localhost:8081", "GetPerson");
+                .Invoke<Person>("http://localhost:8081", "GetPerson");
         }
         public Person SetTheirPerson(int age, int height, double weight, string firstName, string lastName)
         {
             return ServiceDynamicObject<IExampleObject>
-                .Pass<Person>("http://localhost:8081", "SetPerson", age, height, weight, firstName, lastName);
+                .Invoke<Person>("http://localhost:8081", "SetPerson", age, height, weight, firstName, lastName);
         }
     }
     public class Person

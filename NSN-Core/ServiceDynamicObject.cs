@@ -6,7 +6,7 @@ namespace NSN.Core
 {
     public class ServiceDynamicObject<T>: DynamicObject
     {
-        public static TR Pass<TR>(string uri, string method, params object[] obj)
+        public static TR Invoke<TR>(string uri, string method, params object[] obj)
         {
             RestClient restClient = new RestClient(uri);
             MethodInfo methodInfo = typeof(T).GetMethod(method);
@@ -27,7 +27,7 @@ namespace NSN.Core
 
             return Json.ToObject<TR>(content);
         }
-        public static TR Pass<TR>(string uri, string method)
+        public static TR Invoke<TR>(string uri, string method)
         {
             RestClient restClient = new RestClient(uri);
             MethodInfo methodInfo = typeof(T).GetMethod(method);
