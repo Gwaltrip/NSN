@@ -57,11 +57,11 @@ namespace NSN.Example
         }
         public Person GetTheirPerson(string uri)
         {
-            return ServiceDynamicObject.Invoke<IExampleObject,Person>(uri, "GetPerson");
+            return ServiceObject.Invoke<IExampleObject,Person>(uri, "GetPerson");
         }
         public Person SetTheirPerson(string uri, int age, int height, double weight, string firstName, string lastName)
         {
-            return ServiceDynamicObject.Invoke<IExampleObject,Person>(uri, "SetPerson", age, height, weight, firstName, lastName);
+            return ServiceObject.Invoke<IExampleObject,Person>(uri, "SetPerson", age, height, weight, firstName, lastName);
         }
     }
     public class Person

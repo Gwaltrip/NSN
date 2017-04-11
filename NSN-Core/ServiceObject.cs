@@ -1,10 +1,9 @@
 ﻿using System.Reflection;
-using System.Dynamic;
 using RestSharp;
 
 namespace NSN.Core
 {
-    public class ServiceDynamicObject: DynamicObject
+    public class ServiceObject
     {
         public static ReturnType Invoke<InheirantType,ReturnType>(string uri, string method, params object[] obj)
         {
