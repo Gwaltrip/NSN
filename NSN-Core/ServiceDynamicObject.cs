@@ -4,9 +4,9 @@ using RestSharp;
 
 namespace NSN.Core
 {
-    public class ServiceDynamicObject<InheirantType>: DynamicObject
+    public class ServiceDynamicObject: DynamicObject
     {
-        public static ReturnType Invoke<ReturnType>(string uri, string method, params object[] obj)
+        public static ReturnType Invoke<InheirantType,ReturnType>(string uri, string method, params object[] obj)
         {
             RestClient restClient = new RestClient(uri);
             MethodInfo methodInfo = typeof(InheirantType).GetMethod(method);
@@ -27,7 +27,7 @@ namespace NSN.Core
 
             return Json.ToObject<ReturnType>(content);
         }
-        public static ReturnType Invoke<ReturnType>(string uri, string method)
+        public static ReturnType Invoke<InheirantType,ReturnType>(string uri, string method)
         {
             RestClient restClient = new RestClient(uri);
             MethodInfo methodInfo = typeof(InheirantType).GetMethod(method);
