@@ -7,7 +7,6 @@ namespace NSN.Core
     public interface IRunner
     {
         void Start();
-        void Start(string url);
         void Stop();
     }
     
@@ -20,23 +19,11 @@ namespace NSN.Core
             _url = url;
             CoreModule.CoreObject = coreObject;
         }
-        public Runner(object coreObject)
-        {
-            CoreModule.CoreObject = coreObject;
-        }
-
         public void Start()
         {
             _host = new NancyHost(new Uri(_url));
             _host.Start();
         }
-        public void Start(string url)
-        {
-            this._url = url;
-            _host = new NancyHost(new Uri(url));
-            _host.Start();
-        }
-
         public void Stop()
         {
             _host.Stop();

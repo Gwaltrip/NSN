@@ -57,7 +57,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Method.cs" />
+    <Compile Include="ServiceDynamicObject.cs" />
     <Compile Include="Modules\CoreModule.cs" />
     <Compile Include="Runner.cs" />
     <Compile Include="Json.cs" />

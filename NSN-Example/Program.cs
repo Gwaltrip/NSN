@@ -5,74 +5,6 @@ namespace NSN.Example
 {
     class Program
     {
-        class ExampleObject
-        {
-            public Person Person { get; set; }
-            public string HelloWorld()
-            {
-                return "<h1>Hello World!</h1>";
-            }
-
-            public double FiveAndAHalf()
-            {
-                return 5.5;
-            }
-
-            public double GetBmi()
-            {
-                return Person.Bmi();
-            }
-
-            public Person GetPerson()
-            {
-                return Person;
-            }
-
-            public Person SetAge(int age)
-            {
-                Person.Age = age;
-                return Person;
-            }
-
-            public Person SetPerson(int age, int height, double weight, string firstName, string lastName)
-            {
-                Person.Age = age;
-                Person.Height = height;
-                Person.Weight = weight;
-                Person.FirstName = firstName;
-                Person.LastName = lastName;
-                return Person;
-            }
-
-            public ExampleObject This()
-            {
-                return this;
-            }
-
-            public int GetMax()
-            {
-                AbstractObject ao;
-                Method<AbstractObject> method = new Method<AbstractObject>("http://localhost:8081");
-                method.Pass<int>("", 0, 1);
-                return 0;
-            }
-        }
-
-
-        class Person
-        {
-            public int Age { get; set; }
-            public int Height { get; set; }
-            public double Weight { get; set; }
-            public string FirstName { get; set; }
-            public string LastName { get; set; }
-
-            public float Bmi()
-            {
-                return (float) (Weight * 704.7) / (Height * Height);
-            }
-        }
-
         static void Main(string[] args)
         {
             var example = new ExampleObject
@@ -86,8 +18,8 @@ namespace NSN.Example
                     LastName = "Wallace"
                 }
             };
-
-            var runner = new Runner(example, "http://localhost:8080");
+            Console.WriteLine("What port do you want to use?");
+            var runner = new Runner(example, "http://localhost:"+int.Parse(Console.ReadLine()));
             runner.Start();
             Console.Read();
             runner.Stop();
