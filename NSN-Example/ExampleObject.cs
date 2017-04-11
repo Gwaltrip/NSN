@@ -17,8 +17,6 @@ namespace NSN.Example
         public abstract Person SetAge(int age);
         public abstract Person SetPerson(int age, int height, double weight, string firstName, string lastName);
         public abstract ExampleObject This();
-        public abstract Person GetTheirPerson();
-        public abstract Person SetTheirPerson(int age, int height, double weight, string firstName, string lastName);
     }
     public class ExampleObject: IExampleObject
     {
@@ -57,12 +55,12 @@ namespace NSN.Example
         {
             return this;
         }
-        public override Person GetTheirPerson()
+        public Person GetTheirPerson()
         {
             ServiceDynamicObject<Person> personMethod = new ServiceDynamicObject<Person>("http://localhost:8081");
             return personMethod.Pass<Person>("GetPerson");
         }
-        public override Person SetTheirPerson(int age, int height, double weight, string firstName, string lastName)
+        public Person SetTheirPerson(int age, int height, double weight, string firstName, string lastName)
         {
             ServiceDynamicObject<IExampleObject> personMethod = new ServiceDynamicObject<IExampleObject>("http://localhost:8081");
             return personMethod.Pass<Person>("SetPerson", age, height, weight, firstName, lastName);
