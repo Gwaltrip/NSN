@@ -43,6 +43,19 @@ namespace NSN.Example
                 Person.LastName = lastName;
                 return Person;
             }
+
+            public ExampleObject This()
+            {
+                return this;
+            }
+
+            public int GetMax()
+            {
+                AbstractObject ao;
+                Method<AbstractObject> method = new Method<AbstractObject>("http://localhost:8081");
+                method.Pass<int>("", 0, 1);
+                return 0;
+            }
         }
 
 
