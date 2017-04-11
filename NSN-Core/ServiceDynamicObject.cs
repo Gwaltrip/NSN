@@ -4,12 +4,12 @@ using RestSharp;
 
 namespace NSN.Core
 {
-    public class ServiceDynamicObject<T>: DynamicObject
+    public class ServiceDynamicObject<InheirantType>: DynamicObject
     {
-        public static TR Invoke<TR>(string uri, string method, params object[] obj)
+        public static ReturnType Invoke<ReturnType>(string uri, string method, params object[] obj)
         {
             RestClient restClient = new RestClient(uri);
-            MethodInfo methodInfo = typeof(T).GetMethod(method);
+            MethodInfo methodInfo = typeof(InheirantType).GetMethod(method);
             if (methodInfo is null)
                 throw new System.MissingMethodException($"No Method by type '{method}'!");
             var request = new RestRequest($"/{method}");
@@ -25,18 +25,18 @@ namespace NSN.Core
             var response = restClient.Execute(request);
             var content = response.Content;
 
-            return Json.ToObject<TR>(content);
+            return Json.ToObject<ReturnType>(content);
         }
-        public static TR Invoke<TR>(string uri, string method)
+        public static ReturnType Invoke<ReturnType>(string uri, string method)
         {
             RestClient restClient = new RestClient(uri);
-            MethodInfo methodInfo = typeof(T).GetMethod(method);
+            MethodInfo methodInfo = typeof(InheirantType).GetMethod(method);
             var request = new RestRequest($"/{method}");
 
             var response = restClient.Execute(request);
             var content = response.Content;
 
-            return Json.ToObject<TR>(content);
+            return Json.ToObject<ReturnType>(content);
         }
     }
 }
