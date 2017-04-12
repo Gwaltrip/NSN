@@ -19,14 +19,14 @@ namespace NSN.Core
                 var obj = JsonConvert.DeserializeObject<T>(payload);
                 return obj;
             }
-            catch(System.Exception e)
+            catch (System.Exception e)
             {
                 System.Console.WriteLine($"Error on String: '{payload}'");
                 System.Console.WriteLine(e.StackTrace);
             }
             return default(T);
-        } 
-        
+        }
+
         public override string ToString()
         {
             return _payload;

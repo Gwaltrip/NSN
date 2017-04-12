@@ -1,9 +1,4 @@
 ﻿using NSN.Core;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NSN.Example
 {
@@ -57,11 +52,12 @@ namespace NSN.Example
         }
         public Person GetTheirPerson(string uri)
         {
-            return ServiceObject.Invoke<IExampleObject,Person>(uri, "GetPerson");
+            return ServiceInfo.Invoke<IExampleObject,Person>(uri, "GetPerson");
         }
         public Person SetTheirPerson(string uri, int age, int height, double weight, string firstName, string lastName)
         {
-            return ServiceObject.Invoke<IExampleObject,Person>(uri, "SetPerson", age, height, weight, firstName, lastName);
+            ServiceInfo serviceInfo = new ServiceInfo(uri, GetType().GetMethod("SetPerson"));
+            return serviceInfo.Invoke<Person>(age, height, weight, firstName, lastName);
         }
     }
     public class Person
