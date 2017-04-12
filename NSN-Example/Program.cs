@@ -1,10 +1,22 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Dynamic;
+using System.Linq;
+using System.Linq.Expressions;
 using NSN.Core;
 
 namespace NSN.Example
 {
     class Program
     {
+        class A
+        {
+            public string a()
+            {
+                Console.WriteLine("A");
+                return "A";
+            }
+        }
         static void Main(string[] args)
         {
             var example = new ExampleObject
