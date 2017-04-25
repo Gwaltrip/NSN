@@ -9,6 +9,7 @@
 *.nuspec
 Package.nuspec
 *.nupkg
+nuget.exe
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
