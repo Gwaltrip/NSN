@@ -85,7 +85,7 @@ namespace NSN.Core
         {
             RestClient restClient = new RestClient(uri);
             MethodInfo methodInfo = typeof(InheirantType).GetMethod(method);
-            if (methodInfo is null)
+            if (methodInfo == null)
                 throw new System.MissingMethodException($"No Method by type '{method}'!");
             var request = new RestRequest($"/{method}");
             if (obj?.Length > 0)
