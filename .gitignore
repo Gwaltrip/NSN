@@ -8,6 +8,7 @@
 *.sln.docstates
 *.nuspec
 Package.nuspec
+*.nupkg
 
 # User-specific files (MonoDevelop/Xamarin Studio)
 *.userprefs
