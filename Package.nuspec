@@ -1,20 +1,23 @@
 <?xml version="1.0"?>
 <package >
   <metadata>
-    <id>Package</id>
+    <id>NSN</id>
     <version>1.0.0</version>
-    <authors>Gabe</authors>
-    <owners>Gabe</owners>
-    <licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>
-    <projectUrl>http://PROJECT_URL_HERE_OR_DELETE_THIS_LINE</projectUrl>
-    <iconUrl>http://ICON_URL_HERE_OR_DELETE_THIS_LINE</iconUrl>
+    <authors>Gabriel Waltrip</authors>
+    <owners>Gabriel Waltrip</owners>
+    <licenseUrl>https://github.com/Gwaltrip/NSN/blob/master/License.txt</licenseUrl>
+    <projectUrl>https://github.com/Gwaltrip/NSN/</projectUrl>
+    <iconUrl>https://avatars0.githubusercontent.com/u/9119410?v=3&s=460</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Package description</description>
-    <releaseNotes>Summary of changes made in this release of the package.</releaseNotes>
+    <description>A simplier way of connecting most objects to the web.</description>
+    <releaseNotes>First release.</releaseNotes>
     <copyright>Copyright 2017</copyright>
-    <tags>Tag1 Tag2</tags>
+    <tags>NSN</tags>
     <dependencies>
-      <dependency id="SampleDependency" version="1.0" />
+      <dependency id="Nancy" version="1.4.3" />
+      <dependency id="Nancy.Hosting.Self" version="1.4.1" />
+      <dependency id="Newtonsoft.Json" version="10.0.2" />
+      <dependency id="RestSharp" version="105.2.3" />
     </dependencies>
   </metadata>
 </package>
